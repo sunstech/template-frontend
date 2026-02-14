@@ -1,0 +1,32 @@
+name: Slack Bildirimleri
+
+on:
+  pull_request:
+    types: [opened, closed]
+    branches: [main, develop]
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: PR Acildi Bildirimi
+        if: github.event.action == 'opened'
+        run: |
+          curl -s -X POST https://slack.com/api/chat.postMessage \
+            -H "Authorization: Bearer ${{ secrets.SLACK_BOT_TOKEN }}" \
+            -H "Content-Type: application/json" \
+            -d "{
+              \"channel\": \"${{ secrets.SLACK_DEV_CHANNEL_ID }}\",
+              \"text\": \"🔀 *Yeni PR:* <${{ github.event.pull_request.html_url }}|${{ github.event.pull_request.title }}>\n📦 Repo: ${{ github.repository }}\n👤 ${{ github.event.pull_request.user.login }}\n🎯 ${{ github.event.pull_request.base.ref }} ← ${{ github.event.pull_request.head.ref }}\"
+            }"
+
+      - name: PR Merge Bildirimi
+        if: github.event.action == 'closed' && github.event.pull_request.merged == true
+        run: |
+          curl -s -X POST https://slack.com/api/chat.postMessage \
+            -H "Authorization: Bearer ${{ secrets.SLACK_BOT_TOKEN }}" \
+            -H "Content-Type: application/json" \
+            -d "{
+              \"channel\": \"${{ secrets.SLACK_DEV_CHANNEL_ID }}\",
+              \"text\": \"✅ *PR Merge Edildi:* <${{ github.event.pull_request.html_url }}|${{ github.event.pull_request.title }}>\n📦 Repo: ${{ github.repository }}\n👤 ${{ github.event.pull_request.user.login }}\"
+            }"
