@@ -1,17 +1,16 @@
-## Ne yaptim?
+## Ne degisti?
+Kisa aciklama yazin.
 
-- 
+## Neden?
+Bu degisiklik neden gerekli?
 
-## Neden yaptim?
+## Nasil test edilir?
+- [ ] Lokal'de calistirdim, calisiyor
+- [ ] Ilgili sayfalari kontrol ettim
+- [ ] Mevcut ozellikleri bozmadim
 
+## Ekran goruntusu
+UI degisikligi varsa oncesi/sonrasi ekleyin.
 
-
-## Ekran goruntusu (varsa)
-
-
-
-## Test
-
-- [ ] Lokalde test ettim
-- [ ] Build basarili
-- [ ] Responsive kontrol ettim
+## Ilgili issue
+Closes #
