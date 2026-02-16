@@ -5,7 +5,7 @@
 ## Gereksinimler
 
 - Node.js 20+
-- npm veya yarn
+- npm
 
 ## Kurulum
 
@@ -23,18 +23,24 @@ Tarayicida http://localhost:3000 adresine git.
 
 | Komut | Aciklama |
 |-------|----------|
-| npm run dev | Development server |
-| npm run build | Production build |
-| npm run lint | Lint kontrolu |
-| npm run type-check | TypeScript tip kontrolu |
-| npm test | Testleri calistir |
+| `npm run dev` | Development server (Turbopack) |
+| `npm run build` | Production build |
+| `npm run start` | Production server |
+| `npm run lint` | ESLint kontrolu |
+
+## Tech Stack
+
+- **Framework:** Next.js (App Router)
+- **Dil:** TypeScript
+- **Styling:** Tailwind CSS
+- **Linting:** ESLint
 
 ## Git Workflow
 
-- main - Production (sadece PR ile merge)
-- develop - Development
-- feature/xxx - Yeni ozellik
-- fix/xxx - Bug fix
+- `main` - Production (sadece PR ile merge)
+- `develop` - Development
+- `feature/xxx` - Yeni ozellik
+- `fix/xxx` - Bug fix
 
 ### Commit Formati
 ```
