@@ -8,6 +8,7 @@ Next.js frontend projesi. Bu dosya Claude Code icin proje kurallarini tanimlar.
 - **Dil:** TypeScript 5 (strict mode)
 - **Styling:** Tailwind CSS 4
 - **Linting:** ESLint 9 (flat config) + Prettier
+- **Test:** Vitest + React Testing Library (unit/component), Playwright (E2E)
 - **Font:** Geist Sans / Geist Mono (`next/font/google`)
 
 ## Kod Kurallari
@@ -43,6 +44,32 @@ Next.js frontend projesi. Bu dosya Claude Code icin proje kurallarini tanimlar.
 - Dosya adi: camelCase, `use` prefix (`useAuth.ts`, `useDebounce.ts`)
 - Named export kullan
 
+## Test Kurallari
+
+### Unit & Component Testleri (Vitest + React Testing Library)
+- Test dosyalari: `__tests__/` klasorunde, `.test.tsx` uzantisi
+- Component testlerinde `@testing-library/react` kullan — DOM query'leri icin `screen` kullan
+- Kullanici etkilesimi icin `@testing-library/user-event` kullan (`fireEvent` degil)
+- Her component icin en az: render, interaction ve edge case testleri yaz
+- Mock'lar icin `vi.fn()` ve `vi.mock()` kullan
+- `npm test` ile calistir, `npm run test:watch` ile izleme modunda calistir
+
+### E2E Testleri (Playwright)
+- Test dosyalari: `e2e/` klasorunde, `.spec.ts` uzantisi
+- Locator'lar icin `getByRole`, `getByText` tercih et (CSS selector yerine)
+- Her kritik kullanici akisi icin E2E testi yaz (navigasyon, form submit, auth)
+- `npm run test:e2e` ile calistir, `npm run test:e2e:ui` ile gorsel modda calistir
+
+### Test Dosya Yapisi
+```
+__tests__/              # Unit & component testleri
+  page.test.tsx         # Sayfa testleri
+  components/           # Component testleri
+    Button.test.tsx
+e2e/                    # E2E testleri
+  home.spec.ts
+```
+
 ## Klasor Yapisi
 
 ```
@@ -53,6 +80,8 @@ hooks/                  # Custom React hook'lari
 lib/                    # Yardimci fonksiyonlar, config
 types/                  # Paylasilan TypeScript tipleri
 public/                 # Statik dosyalar
+__tests__/              # Unit & component testleri (Vitest)
+e2e/                    # E2E testleri (Playwright)
 ```
 
 ## Kod Uretme Komutlari
