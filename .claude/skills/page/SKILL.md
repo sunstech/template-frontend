@@ -1,5 +1,6 @@
 ---
-description: Yeni bir Next.js sayfasi olusturur (App Router). Ornek: /page about - Hakkimizda sayfasi
+name: page
+description: "Next.js sayfasi olusturur (App Router). Triggers: sayfa, page, route, yeni sayfa, sayfa olustur, about, contact, pricing, blog, dinamik sayfa."
 argument-hint: sayfa-yolu - Kisa aciklama
 ---
 
@@ -14,7 +15,7 @@ $ARGUMENTS
 - Ic ice route: `app/[ust]/[alt]/page.tsx`
 - Dinamik route: `app/[parametre]/page.tsx` (koseli parantez ile)
 
-### Sayfa Yapisi (Server Component — Varsayilan)
+### Sayfa Yapisi (Server Component - Varsayilan)
 ```tsx
 import type { Metadata } from "next";
 
@@ -60,17 +61,11 @@ export default async function SayfaAdi({ params }: PageProps) {
 ### Zorunlu Kurallar
 1. **Server Component varsayilan**: Sayfalar varsayilan olarak Server Component olmali
 2. **Metadata**: Her sayfada `export const metadata` veya `generateMetadata` tanimla
-3. **Tailwind CSS**: Stil icin sadece Tailwind class'lari kullan
+3. **Tailwind CSS**: Stil icin sadece Tailwind classlari kullan
 4. **Semantik HTML**: `<main>`, `<section>`, `<article>`, `<h1>` vb. kullan
-5. **Next.js 16 params**: `params` ve `searchParams` artik `Promise` — `await` ile erisilmeli
+5. **Next.js 16 params**: `params` ve `searchParams` artik `Promise` - `await` ile erisilmeli
 6. **Responsive**: Mobile-first tasarim
 7. **Dark mode** destegi ekle
-
-### Ek Dosyalar (Gerektiginde)
-Kullanicinin ihtiyacina gore su dosyalari da olustur:
-- `loading.tsx` — Yukleniyor durumu (Suspense fallback)
-- `error.tsx` — Hata durumu (`"use client"` gerektirir)
-- `not-found.tsx` — 404 sayfasi
 
 ### loading.tsx Sablonu
 ```tsx
@@ -110,6 +105,5 @@ export default function Error({ error, reset }: ErrorProps) {
 
 Dosyayi olusturduktan sonra kullaniciya bilgi ver:
 - Olusturulan dosya yolu/yollari
-- Sayfanin URL'i (ornek: `localhost:3000/about`)
+- Sayfanin URLi (ornek: `localhost:3000/about`)
 - Metadata bilgisi
-- Eger loading.tsx veya error.tsx de olusturduysan, onlari da belirt

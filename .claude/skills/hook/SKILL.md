@@ -1,5 +1,6 @@
 ---
-description: Yeni bir custom React hook olusturur. Ornek: /hook useDebounce - Debounce islemi icin hook
+name: hook
+description: "Custom React hook olusturur. Triggers: hook, useEffect, useState, custom hook, debounce, localStorage, media query, click outside, async hook."
 argument-hint: useHookAdi - Kisa aciklama
 ---
 
@@ -29,36 +30,19 @@ interface UseHookAdiReturn {
 
 export function useHookAdi(options?: UseHookAdiOptions): UseHookAdiReturn {
   // Hook mantigi
-
-  return {
-    // Donus degerleri
-  };
+  return {};
 }
 ```
 
 ### Zorunlu Kurallar
-1. **"use client"**: Hook'lar React hook'lari kullandigi icin her zaman client component gerektirir, dosyanin en ustune `"use client"` ekle
+1. **"use client"**: Hooklar React hooklari kullandigi icin dosyanin en ustune ekle
 2. **TypeScript**: Parametre ve donus tipleri icin interface tanimla
 3. **Named export** kullan (default export degil)
-4. **Dosya adi**: camelCase, `use` prefix ile basla (`useAuth.ts`, `useDebounce.ts`)
+4. **Dosya adi**: camelCase, `use` prefix ile basla
 5. **Hook adi**: `use` prefix ile basla (React kurali)
 6. **Temizlik**: `useEffect` icinde cleanup fonksiyonu tanimla (gerektiginde)
-7. **Hata yonetimi**: try/catch ile hata durumlarini yakala, hata state'i dondur
-8. **Performans**: Gereksiz re-render'i onlemek icin `useCallback`, `useMemo` kullan
-
-### Hook Kategorileri ve Ornekler
-
-**State Yonetimi:**
-- `useLocalStorage` — localStorage senkronizasyonu
-- `useToggle` — boolean state toggle
-
-**Side Effects:**
-- `useDebounce` — Deger debounce
-- `useMediaQuery` — Responsive breakpoint algilama
-- `useClickOutside` — Dis tiklama algilama
-
-**Data Fetching:**
-- `useAsync` — Asenkron islem yonetimi (loading, error, data)
+7. **Hata yonetimi**: try/catch ile hata durumlarini yakala
+8. **Performans**: Gereksiz re-renderi onlemek icin `useCallback`, `useMemo` kullan
 
 ### Ornek: useDebounce
 ```ts
@@ -73,17 +57,9 @@ export function useDebounce<T>(value: T, delay: number = 300): T {
     const timer = setTimeout(() => {
       setDebouncedValue(value);
     }, delay);
-
-    return () => {
-      clearTimeout(timer);
-    };
+    return () => { clearTimeout(timer); };
   }, [value, delay]);
 
   return debouncedValue;
 }
 ```
-
-Dosyayi olusturduktan sonra kullaniciya bilgi ver:
-- Dosya yolu
-- Kullanim ornegi (import + component icinde kullanim)
-- Donus degerleri ve tipleri

@@ -1,5 +1,6 @@
 ---
-description: Yeni bir React component olusturur. Ornek: /component Button - Tiklanabilir buton componenti
+name: component
+description: "React component olusturur. Triggers: component, button, card, modal, input, badge, sidebar, navbar, header, footer, UI element, widget, bilesen olustur."
 argument-hint: ComponentAdi - Kisa aciklama
 ---
 
@@ -31,20 +32,20 @@ export default function ComponentAdi({ ...props }: ComponentAdiProps) {
 
 ### Zorunlu Kurallar
 1. **TypeScript**: Props icin interface tanimla, `any` kullanma
-2. **Tailwind CSS**: Stil icin sadece Tailwind class'lari kullan, inline style veya CSS module kullanma
+2. **Tailwind CSS**: Stil icin sadece Tailwind classlari kullan, inline style veya CSS module kullanma
 3. **Server Component varsayilan**: `"use client"` sadece interaktivite gerekiyorsa ekle
 4. **Default export** kullan
 5. **Dosya adi** PascalCase olmali
-6. **Responsive**: Mobile-first yaklasim, `sm:`, `md:`, `lg:` breakpoint'leri kullan
+6. **Responsive**: Mobile-first yaklasim, `sm:`, `md:`, `lg:` breakpointleri kullan
 7. **Dark mode**: `dark:` prefix ile karanlik tema destegi ekle
-8. **Erisilebilirlik**: Uygun ARIA attribute'leri, semantik HTML etiketleri kullan
+8. **Erisilebilirlik**: Uygun ARIA attributeleri, semantik HTML etiketleri kullan
 9. **Import path**: `@/` alias kullan (ornek: `@/components/ui/Button`)
 
 ### Props Tasarimi
-- Opsiyonel prop'lar icin `?` kullan
-- `className` prop'u kabul et (kullanicinin stil ekleyebilmesi icin)
-- Event handler'lar icin uygun React tipi kullan (`React.MouseEvent`, `React.ChangeEvent` vb.)
-- children prop'u gerekliyse `React.ReactNode` tipinde tanimla
+- Opsiyonel proplar icin `?` kullan
+- `className` propu kabul et (kullanicinin stil ekleyebilmesi icin)
+- Event handlerlar icin uygun React tipi kullan (`React.MouseEvent`, `React.ChangeEvent` vb.)
+- children propu gerekliyse `React.ReactNode` tipinde tanimla
 
 ### Ornek Cikti Yapisi
 Eger `/component Button - Tiklanabilir buton componenti, variant ve size destegi` yazildiysa:
@@ -101,4 +102,4 @@ export default function Button({
 Dosyayi olusturduktan sonra kullaniciya bilgi ver:
 - Dosya yolu
 - Kullanim ornegi (import + JSX)
-- Eklenen prop'larin listesi
+- Eklenen proplarin listesi
